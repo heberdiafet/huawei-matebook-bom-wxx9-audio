@@ -39,8 +39,9 @@ Probado en un MateBook 14 2021 (`BOM-WXX9-PCB-B2`, kernel 6.12.113 de Debian 13)
 `dmesg` muestra `speaker gpio 0 active high, headphone gpio 1 active low` y el
 jack suena; además los altavoces se silencian al conectar los cascos.
 
-También lo he enviado a la lista del kernel (`linux-sound@vger.kernel.org`,
-asunto `ASoC: amd: acp3x-es83xx: Fix headphone GPIO polarity on BOM-WXX9`)
+También tengo preparado el envío a la lista del kernel
+(`linux-sound@vger.kernel.org`, asunto
+`ASoC: amd: acp3x-es83xx: Fix headphone GPIO polarity on BOM-WXX9`)
 para que deje de hacer falta el parche fuera del árbol.
 
 Si te parece bien, puedo mandarlo como PR con el fichero del parche actualizado

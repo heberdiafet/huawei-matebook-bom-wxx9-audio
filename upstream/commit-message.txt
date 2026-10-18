@@ -22,4 +22,5 @@ Tested on a MateBook 14 2021 (BOM-WXX9-PCB-B2): dmesg now reports
 
 Fixes: 54fcd9dd44b2 ("ASoC: amd: acp: Add machine driver that enables sound for systems with a ES8336 codec")
 Link: https://github.com/codepayne/linux-sound-huawei/issues/39
+Link: https://github.com/heberdiafet/huawei-matebook-bom-wxx9-audio
 Signed-off-by: heberdiafet <heberdiafet@gmail.com>

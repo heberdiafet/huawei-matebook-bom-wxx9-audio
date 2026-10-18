@@ -1,4 +1,4 @@
-From 2e136ae76be51350f3c8772926a19b98e7e9f584 Mon Sep 17 00:00:00 2001
+From 149513a16b15d664feaf5a8e7a1fd2ec0869eaa5 Mon Sep 17 00:00:00 2001
 From: heberdiafet <heberdiafet@gmail.com>
 Date: Sat, 17 Oct 2026 23:55:52 -0600
 Subject: [PATCH] ASoC: amd: acp3x-es83xx: Fix headphone GPIO polarity on
@@ -26,6 +26,7 @@ Tested on a MateBook 14 2021 (BOM-WXX9-PCB-B2): dmesg now reports
 
 Fixes: 54fcd9dd44b2 ("ASoC: amd: acp: Add machine driver that enables sound for systems with a ES8336 codec")
 Link: https://github.com/codepayne/linux-sound-huawei/issues/39
+Link: https://github.com/heberdiafet/huawei-matebook-bom-wxx9-audio
 Signed-off-by: heberdiafet <heberdiafet@gmail.com>
 ---
  sound/soc/amd/acp/acp3x-es83xx/acp3x-es83xx.c | 5 +++--

@@ -46,15 +46,15 @@ entrada DMI para `BOM-WXX9/M1010`, pero esa entrada ya existe antes en
 duplicada nunca se usa y el quirk no surte efecto; hay que modificar el
 `driver_data` de la entrada existente (lo tengo hecho en el parche del repo).
 
-Estoy enviando el parche corregido a `linux-sound@vger.kernel.org`
-(asunto: `ASoC: amd: acp3x-es83xx: Fix headphone GPIO polarity on BOM-WXX9`)
-para que venga de serie en el kernel. Mientras tanto, el DKMS cubre 6.12.y.
+Tengo el parche corregido listo para enviar a `linux-sound@vger.kernel.org`
+(asunto: `ASoC: amd: acp3x-es83xx: Fix headphone GPIO polarity on BOM-WXX9`);
+avisaré por aquí cuando esté en la lista. Mientras tanto, el DKMS cubre 6.12.y.
 ```
 
 ## Notas
 
 * La URL ya apunta a `heberdiafet/huawei-matebook-bom-wxx9-audio`: publícalo antes de comentar, o ajústala si cambias el nombre.
-* Si el parche aún no está enviado cuando publiques el comentario, quita la
-  última frase o cámbiala por «lo voy a enviar».
+* El texto ya está ajustado a «listo para enviar»; cuando lo mandes, puedes
+  editar el comentario para poner el enlace al hilo de lore.kernel.org.
 * Este mismo texto sirve para el issue #28 («No sound on 6.7rc5…») y para
   cualquier otro reporte de `BOM-WXX9` con auriculares mudos.

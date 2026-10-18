@@ -12,7 +12,7 @@ Estado: **listo para enviar**.
 Ficheros:
 
 * `0001-ASoC-amd-acp3x-es83xx-Fix-headphone-GPIO-polarity-on.patch` — el parche
-  (`git format-patch`), sha256 `dc3552f0…fa875d`
+  (`git format-patch`), sha256 `53d3a66e…fee840`
 * `commit-message.txt` — solo el mensaje, por si lo envías desde un webmail
 
 ## Qué cambia (3 líneas)
