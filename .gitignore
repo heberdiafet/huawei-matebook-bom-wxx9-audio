@@ -1,0 +1,19 @@
+# Artefactos de compilación del módulo (kbuild)
+*.o
+*.o.*
+*.ko
+*.mod
+*.mod.c
+*.symvers
+*.order
+.tmp_versions/
+.*.cmd
+
+# Se conserva el módulo precompilado que se publica como comodidad
+!prebuilt/*.ko
+
+# Varios
+*.swp
+*~
+.DS_Store
+__pycache__/

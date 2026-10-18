@@ -1,0 +1,37 @@
+--- a/acp3x-es83xx/acp3x-es83xx.c
++++ b/acp3x-es83xx/acp3x-es83xx.c
+@@ -28,6 +28,7 @@
+ 
+ #define ES83XX_ENABLE_DMIC	BIT(4)
+ #define ES83XX_48_MHZ_MCLK	BIT(5)
++#define ES83XX_HP_LOW		BIT(6)
+ 
+ struct acp3x_es83xx_private {
+ 	bool speaker_on;
+@@ -227,7 +228,16 @@
+ 	priv->enable_hp_gpio.crs_entry_index = 1;
+ 
+ 	priv->enable_spk_gpio.active_low = false;
+-	priv->enable_hp_gpio.active_low = false;
++
++	/*
++	 * On the Huawei BOM-WXX9 (MateBook 14/15 AMD) boards the headphone
++	 * enable line is wired active-low: driving it high mutes the
++	 * headphone output of the ES8336 codec.
++	 */
++	if (priv->quirk & ES83XX_HP_LOW)
++		priv->enable_hp_gpio.active_low = true;
++	else
++		priv->enable_hp_gpio.active_low = false;
+ 
+ 	priv->gpio_mapping[0].name = "speakers-enable-gpios";
+ 	priv->gpio_mapping[0].data = &priv->enable_spk_gpio;
+@@ -352,7 +362,7 @@
+ 			DMI_EXACT_MATCH(DMI_PRODUCT_NAME, "BOM-WXX9"),
+ 			DMI_EXACT_MATCH(DMI_PRODUCT_VERSION, "M1010"),
+ 		},
+-		.driver_data = (void *)(ES83XX_ENABLE_DMIC|ES83XX_48_MHZ_MCLK),
++		.driver_data = (void *)(ES83XX_ENABLE_DMIC|ES83XX_48_MHZ_MCLK|ES83XX_HP_LOW),
+ 	},
+ 	{
+ 		.matches = {

@@ -1,0 +1,25 @@
+ASoC: amd: acp3x-es83xx: Fix headphone GPIO polarity on BOM-WXX9
+
+The headphone-enable GPIO of the ES8336 codec is wired active-low on the
+HUAWEI MateBook 14/15 2021 AMD boards (DMI board vendor HUAWEI, product
+name BOM-WXX9, product version M1010): the codec output only reaches the
+3.5 mm jack while that line is driven low.
+
+The machine driver configures the line as active-high unconditionally, so
+plugging headphones leaves the analog output muted. The jack is detected,
+userspace switches to the headphone sink and plays, but nothing is heard
+on the jack. Inserting the plug only halfway - so that the presence
+switch is not asserted yet - does produce sound, which confirms the
+inverted polarity.
+
+Add an ES83XX_HP_LOW quirk and enable it for the BOM-WXX9/M1010 DMI entry
+so that the GPIO is driven low while the headphone path is powered up.
+With the correct polarity the speakers also mute properly as soon as
+headphones are plugged in.
+
+Tested on a MateBook 14 2021 (BOM-WXX9-PCB-B2): dmesg now reports
+"headphone gpio 1 active low" and audio is audible through the jack.
+
+Fixes: 54fcd9dd44b2 ("ASoC: amd: acp: Add machine driver that enables sound for systems with a ES8336 codec")
+Link: https://github.com/codepayne/linux-sound-huawei/issues/39
+Signed-off-by: heberdiafet <heberdiafet@gmail.com>
