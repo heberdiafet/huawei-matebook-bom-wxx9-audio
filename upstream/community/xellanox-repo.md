@@ -42,10 +42,9 @@ Probado en un MateBook 14 2021 (`BOM-WXX9-PCB-B2`, kernel 6.12.113 de Debian 13)
 `dmesg` muestra `speaker gpio 0 active high, headphone gpio 1 active low` y el
 jack suena; además los altavoces se silencian al conectar los cascos.
 
-También tengo preparado el envío a la lista del kernel
-(`linux-sound@vger.kernel.org`, asunto
-`ASoC: amd: acp3x-es83xx: Fix headphone GPIO polarity on BOM-WXX9`)
-para que deje de hacer falta el parche fuera del árbol.
+El parche corregido queda en el repo para quien quiera enviarlo a
+`linux-sound@vger.kernel.org` (asunto sugerido:
+`ASoC: amd: acp3x-es83xx: Fix headphone GPIO polarity on BOM-WXX9`).
 
 Si te parece bien, puedo mandarlo como PR con el fichero del parche actualizado
 (y ajustar el README). ¿Lo prefieres así?
@@ -56,5 +55,7 @@ Si te parece bien, puedo mandarlo como PR con el fichero del parche actualizado
 * Si prefieres no tocar su repo, este texto vale igual como **issue**.
 * Adjunta el `.patch`; no hace falta pegar el diff en el cuerpo.
 * Repo con la corrección y el módulo DKMS: https://github.com/heberdiafet/huawei-matebook-bom-wxx9-audio
+* Lo publicado finalmente fue un comentario en inglés en el issue «upstreaming»
+  (#1), no un PR; el texto de abajo es la versión en español equivalente.
 * Nuestro parche aplica también sobre 6.19/6.20 (está hecho contra mainline),
   así que le sirve igual.

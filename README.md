@@ -67,11 +67,10 @@ huawei-audio-hpfix/
 ├── upstream/                  # parche listo para enviar al kernel
 │   ├── 0001-ASoC-amd-acp3x-es83xx-Fix-headphone-GPIO-polarity-on.patch
 │   ├── commit-message.txt
-│   ├── SUBMITTING.md          # destinatarios, comandos y seguimiento
+│   ├── README.md              # estado del parche y destinatarios (para quien lo envíe)
 │   └── community/             # textos para issues/PRs de la comunidad
 │       ├── codepayne-issue39.md
 │       └── xellanox-repo.md
-├── PUBLISHING.md              # cómo publicar este repo en GitHub
 ├── LICENSE                    # GPL-2.0 (fuentes del kernel)
 ├── .gitignore
 ├── install.sh
@@ -209,46 +208,33 @@ sudo dkms status
 ls -l /lib/modules/$(uname -r)/updates/dkms/
 ```
 
-## Enviarlo upstream
+## Parche upstream (para quien quiera usarlo)
 
-En [`upstream/`](upstream/) está el commit listo para la lista del kernel:
+En [`upstream/`](upstream/) queda el parche del arreglo, validado y listo, pero
+**no lo enviamos a la lista del kernel**: se publica para que la comunidad lo
+revise, lo pruebe o lo envíe si le interesa. Este repo no hace seguimiento de
+ese envío.
 
 * commit contra `mainline`, con mensaje, `Fixes:` y `Signed-off-by`;
 * `checkpatch.pl --strict`: **0 errores, 0 warnings, 0 checks**;
-* aplica tanto en `mainline` como en `6.12.113` (offset -2/-4).
+* aplica tanto en `mainline` como en `6.12.113` (offset −2/−4).
 
-Destinatarios (según `MAINTAINERS`: *AMD ASoC DRIVERS* + *ASoC core*) y comandos
-exactos de `git send-email` en [`upstream/SUBMITTING.md`](upstream/SUBMITTING.md).
-Resumen:
+Si alguien quiere enviarlo, los destinatarios según `MAINTAINERS` (*AMD ASoC
+DRIVERS* + *ASoC core*) y el comando `git send-email` están en
+[`upstream/README.md`](upstream/README.md). Respetando el DCO: se mantiene el
+`From:` original y se añade el `Signed-off-by` de quien envía.
 
-```bash
-sudo apt install git-email
-git send-email \
-  --to="Mark Brown <broonie@kernel.org>" \
-  --cc="Liam Girdwood <lgirdwood@gmail.com>" \
-  --cc="Vijendar Mukunda <Vijendar.Mukunda@amd.com>" \
-  --cc="Venkata Prasad Potturu <venkataprasad.potturu@amd.com>" \
-  --cc="Marian Postevca <posteuca@mutex.one>" \
-  --cc="linux-sound@vger.kernel.org" \
-  --cc="linux-kernel@vger.kernel.org" \
-  upstream/0001-ASoC-amd-acp3x-es83xx-Fix-headphone-GPIO-polarity-on.patch
-```
+## Publicado en GitHub
 
-Seguimiento en <https://lore.kernel.org/linux-sound/> y
-<https://patchwork.kernel.org/project/alsa-soc/>. Si lo aceptan, llegará a
-`linux-next` y luego al kernel principal; mientras tanto el DKMS sigue
-funcionando igual.
+Repo público: **<https://github.com/heberdiafet/huawei-matebook-bom-wxx9-audio>**
 
-## Publicarlo en GitHub
+* Comentario en el issue original del bug:
+  [codepayne/linux-sound-huawei#39](https://github.com/codepayne/linux-sound-huawei/issues/39#issuecomment-6246424466)
+* Comentario en el issue «upstreaming» de la comunidad:
+  [Xellanox/Huawei-Matebook-14-Audio#1](https://github.com/Xellanox/Huawei-Matebook-14-Audio/issues/1#issuecomment-6246425857)
 
-Este directorio ya es un repositorio git con todo commiteado y listo para subir
-(GPL-2.0, `.gitignore` para artefactos de kbuild, texto del commit y notas).
-Los comandos exactos —incluido `gh repo create`— están en
-[`PUBLISHING.md`](PUBLISHING.md).
-
-Recuerda que el kernel **no acepta PRs** en GitHub: el repo sirve como
-escaparate y como evidencia enlazable (`Link:`), mientras que la entrada real va
-por la lista de correo.
+El kernel **no acepta PRs** en GitHub: el repo sirve como escaparate y como
+evidencia enlazable (`Link:` en el parche), no como vía de integración.
 
 ## Notas técnicas
 
@@ -264,7 +250,7 @@ por la lista de correo.
   módulo (MOK) o desinstalar el parche.
 * El parche afecta únicamente al DMI `BOM-WXX9/M1010`; otros modelos Huawei con
   ES8336 no cambian de comportamiento.
-* Situación en upstream: el quirk no está en el kernel principal; existe un
-  parche de la comunidad con la misma idea
-  (<https://github.com/Xellanox/Huawei-Matebook-14-Audio>) y el problema está
-  descrito en <https://github.com/codepayne/linux-sound-huawei/issues/39>.
+* Situación en upstream: el quirk **no** está en el kernel principal. En
+  [`upstream/`](upstream/) queda el parche validado para quien quiera usarlo o
+  enviarlo; el problema original está descrito en
+  <https://github.com/codepayne/linux-sound-huawei/issues/39>.
