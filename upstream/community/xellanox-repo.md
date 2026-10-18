@@ -3,6 +3,9 @@
 Repo: <https://github.com/Xellanox/Huawei-Matebook-14-Audio>
 Fichero a adjuntar: `upstream/0001-ASoC-amd-acp3x-es83xx-Fix-headphone-GPIO-polarity-on.patch`
 
+**Publicado:** <https://github.com/Xellanox/Huawei-Matebook-14-Audio/issues/1#issuecomment-6246425857>
+(en el issue abierto «upstreaming», redactado en inglés porque el repo es internacional)
+
 ## Título sugerido
 
 ```

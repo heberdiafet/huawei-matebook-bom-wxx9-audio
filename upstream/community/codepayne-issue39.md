@@ -3,6 +3,8 @@
 Issue: <https://github.com/codepayne/linux-sound-huawei/issues/39>
 Título: *No sound on headphones BOM-WXX9-PCB-B2*
 
+**Publicado:** <https://github.com/codepayne/linux-sound-huawei/issues/39#issuecomment-6246424466>
+
 ## Comentario
 
 ```markdown
